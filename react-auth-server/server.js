@@ -10,8 +10,8 @@ app.use(cors());
 // This middleware will check incoming requests for a valid
 // JWT on any routes that it is applied to.
 const authCheck = jwt({
-    secret: new Buffer('YOUR_AUTH0_SECRET', 'base64'),
-    audience: 'YOUR_AUTH0_CLIENT_ID'
+    secret: new Buffer(config.YOUR_AUTH0_SECRET, 'base64'),
+    audience: config.YOUR_AUTH0_CLIENT_ID
 });
 
 var contacts = [
