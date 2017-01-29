@@ -1,9 +1,10 @@
+import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import {browserHistory} from 'react-router';
+import Root from './Root';
 
 ReactDOM.render(
-  <App />,
+  <Root history={browserHistory} />,
   document.getElementById('root')
 );
