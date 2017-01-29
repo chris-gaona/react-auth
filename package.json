@@ -6,6 +6,7 @@
     "react-scripts": "0.8.5"
   },
   "dependencies": {
+    "auth0-lock": "^10.10.2",
     "bootstrap": "^3.3.7",
     "flux": "^3.1.2",
     "keymirror": "^0.1.1",

@@ -1,6 +1,7 @@
-import 'normalize.css/normalize.css';
+// import 'normalize.css/normalize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Auth0Lock from 'auth0-lock';
 import React, { Component } from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
