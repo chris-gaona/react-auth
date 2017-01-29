@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const jwt = require('express-jwt');
 const cors = require('cors');
+const config = require('./config.json');
 
 app.use(cors());
 
@@ -9,8 +10,8 @@ app.use(cors());
 // This middleware will check incoming requests for a valid
 // JWT on any routes that it is applied to.
 const authCheck = ({
-    secret: new Buffer('YOUR_AUTH0_SECRET', 'base64'),
-    audience: 'YOUR_AUTH0_CLIENT_ID'
+    secret: new Buffer(config.YOUR_AUTH0_SECRET, 'base64'),
+    audience: config.YOUR_AUTH0_CLIENT_ID
 });
 
 let contacts = [
