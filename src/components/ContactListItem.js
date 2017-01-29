@@ -4,8 +4,7 @@ import { Link } from 'react-router';
 
 class ContactListItem extends Component {
     render() {
-        const {contact} = this.props;
-
+        const { contact } = this.props;
         return (
             <ListGroupItem>
                 <Link to={`/contact/${contact.id}`}>

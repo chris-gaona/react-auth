@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import { ListGroup } from 'react-bootstrap';
 // import { Link } from 'react-router';
 import ContactActions from '../actions/ContactActions';
-import ContactStore from '../stores/ContactStore';
+import ContactStore from '../store/ContactStore';
 import ContactListItem from './ContactListItem';
 
 // We'll use this function to get a contact
 // list item for each of the contacts in our list
 function getContactListItem(contact) {
     return (
-      <ContactListItem
-        key={contact.id}
-        contact={contact}
-      />
+        <ContactListItem
+            key={contact.id}
+            contact={contact}
+        />
     );
 }
-
 class ContactsComponent extends Component {
+
     constructor() {
         super();
         // For our initial state, we just want
@@ -24,7 +24,6 @@ class ContactsComponent extends Component {
         this.state = {
             contacts: []
         }
-
         // We need to bind this to onChange so we can have
         // the proper this reference inside the method
         this.onChange = this.onChange.bind(this);
@@ -43,7 +42,7 @@ class ContactsComponent extends Component {
     }
 
     onChange() {
-        this.setState = ({
+        this.setState({
             contacts: ContactStore.getContacts()
         });
     }

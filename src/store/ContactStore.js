@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ContactConstants from '../constants/ContactConstants';
 import { EventEmitter } from 'events';
-import ContactConstants from "../constants/ContactConstants";
 
 const CHANGE_EVENT = 'change';
 
@@ -16,16 +16,17 @@ function setContact(contact) {
 }
 
 class ContactStoreClass extends EventEmitter {
+
     emitChange() {
         this.emit(CHANGE_EVENT);
     }
 
     addChangeListener(callback) {
-        this.on(CHANGE_EVENT, callback);
+        this.on(CHANGE_EVENT, callback)
     }
 
     removeChangeListener(callback) {
-        this.removeListener(CHANGE_EVENT, callback);
+        this.removeListener(CHANGE_EVENT, callback)
     }
 
     getContacts() {
@@ -35,6 +36,7 @@ class ContactStoreClass extends EventEmitter {
     getContact() {
         return _contact;
     }
+
 }
 
 const ContactStore = new ContactStoreClass();
@@ -42,33 +44,34 @@ const ContactStore = new ContactStoreClass();
 // Here we register a callback for the dispatcher
 // and look for our various action types so we can
 // respond appropriately
-
 ContactStore.dispatchToken = AppDispatcher.register(action => {
+
     switch(action.actionType) {
-        case ContactConstants.RECEIVE_CONTACTS:
+        case ContactConstants.RECIEVE_CONTACTS:
             setContacts(action.contacts);
             // We need to call emitChange so the event listener
             // knows that a change has been made
             ContactStore.emitChange();
-            break;
+            break
 
-        case ContactConstants.RECEIVE_CONTACT:
+        case ContactConstants.RECIEVE_CONTACT:
             setContact(action.contact);
             ContactStore.emitChange();
-            break;
+            break
 
-        case ContactConstants.RECEIVE_CONTACT_ERROR:
+        case ContactConstants.RECIEVE_CONTACT_ERROR:
             alert(action.message);
             ContactStore.emitChange();
-            break;
+            break
 
-        case ContactConstants.RECEIVE_CONTACTS_ERROR:
+        case ContactConstants.RECIEVE_CONTACTS_ERROR:
             alert(action.message);
             ContactStore.emitChange();
-            break;
+            break
 
         default:
     }
+
 });
 
 export default ContactStore;

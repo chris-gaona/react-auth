@@ -1,11 +1,11 @@
 // import 'normalize.css/normalize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Auth0Lock from 'auth0-lock';
 import React, { Component } from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import { Grid, Row, Col } from 'react-bootstrap';
+import Auth0Lock from 'auth0-lock';
 
 let config = require('../../react-auth-server/config.json');
 
@@ -17,11 +17,11 @@ class AppComponent extends Component {
     render() {
         return (
             <div>
-                <Header lock={this.lock} />
+                <Header lock={this.lock}></Header>
                 <Grid>
                     <Row>
                         <Col xs={12} md={3}>
-                            <Sidebar/>
+                            <Sidebar />
                         </Col>
                         <Col xs={12} md={9}>
                             {this.props.children}

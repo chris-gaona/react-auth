@@ -4,11 +4,12 @@ import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap';
 // import AuthStore from '../stores/AuthStore';
 
 class HeaderComponent extends Component {
+
     constructor() {
         super();
         this.state = {
             authenticated: false
-        };
+        }
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
     }
@@ -22,29 +23,28 @@ class HeaderComponent extends Component {
                 alert(err);
                 return;
             }
-
             this.setState({authenticated: true});
         });
     }
 
     logout() {
         // AuthActions.logUserOut();
-        this.setState({authenticated : false});
+        this.setState({authenticated: false});
     }
 
     render() {
         return (
-          <Navbar>
-              <Navbar.Header>
-                  <Navbar.Brand>
-                      <a href="#">React Contacts</a>
-                  </Navbar.Brand>
-              </Navbar.Header>
-              <Nav>
-                  <NavItem onClick={this.login}>Login</NavItem>
-                  <NavItem onClick={this.logout}>Logout</NavItem>
-              </Nav>
-          </Navbar>
+            <Navbar>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <a href="#">React Contacts</a>
+                    </Navbar.Brand>
+                </Navbar.Header>
+                <Nav>
+                    <NavItem onClick={this.login}>Login</NavItem>
+                    <NavItem onClick={this.logout}>Logout</NavItem>
+                </Nav>
+            </Navbar>
         );
     }
 }
