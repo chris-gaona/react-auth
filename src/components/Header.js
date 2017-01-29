@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap';
-// import AuthActions from '../actions/AuthActions';
-// import AuthStore from '../stores/AuthStore';
+import AuthActions from '../actions/AuthActions';
+import AuthStore from '../store/AuthStore';
 
 class HeaderComponent extends Component {
 
@@ -9,7 +9,7 @@ class HeaderComponent extends Component {
         super();
         this.state = {
             authenticated: false
-        }
+        };
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
     }
@@ -23,12 +23,13 @@ class HeaderComponent extends Component {
                 alert(err);
                 return;
             }
+            AuthActions.logUserIn(profile, token);
             this.setState({authenticated: true});
         });
     }
 
     logout() {
-        // AuthActions.logUserOut();
+        AuthActions.logUserOut();
         this.setState({authenticated: false});
     }
 
