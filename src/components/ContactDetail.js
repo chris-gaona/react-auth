@@ -3,11 +3,12 @@ import ContactActions from '../actions/ContactActions';
 import ContactStore from '../store/ContactStore';
 
 class ContactDetailComponent extends Component {
+
     constructor() {
         super();
         this.state = {
             contact: {}
-        };
+        }
         this.onChange = this.onChange.bind(this);
     }
 
@@ -16,7 +17,7 @@ class ContactDetailComponent extends Component {
     }
 
     componentDidMount() {
-        ContactActions.getContact(this.props.param.id);
+        ContactActions.getContact(this.props.params.id);
     }
 
     componentWillUnmount() {
@@ -40,10 +41,9 @@ class ContactDetailComponent extends Component {
         if (this.state.contact) {
             contact = this.state.contact;
         }
-
         return (
             <div>
-                {this.state.contact &&
+                { this.state.contact &&
                 <div>
                     <img src={contact.image} width="150" alt={contact.name} />
                     <h1>{contact.name}</h1>

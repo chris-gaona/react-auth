@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap';
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import AuthActions from '../actions/AuthActions';
 import AuthStore from '../store/AuthStore';
 
@@ -8,16 +8,14 @@ class HeaderComponent extends Component {
     constructor() {
         super();
         this.state = {
-            authenticated: false
+            authenticated: AuthStore.isAuthenticated()
         };
+        // binds login functions to keep this context
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
     }
 
     login() {
-        // We can call the show method from Auth0Lock,
-        // which is passed down as a prop, to allow
-        // the user to log in
         this.props.lock.show((err, profile, token) => {
             if (err) {
                 alert(err);
@@ -42,8 +40,11 @@ class HeaderComponent extends Component {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
+                    {!this.state.authenticated ? (
                     <NavItem onClick={this.login}>Login</NavItem>
+                    ) : (
                     <NavItem onClick={this.logout}>Logout</NavItem>
+                    )}
                 </Nav>
             </Navbar>
         );

@@ -22,11 +22,11 @@ class AuthStoreClass extends EventEmitter {
     }
 
     addChangeListener(callback) {
-        this.on(CHANGE_EVENT, callback);
+        this.on(CHANGE_EVENT, callback)
     }
 
     removeChangeListener(callback) {
-        this.removeListener(CHANGE_EVENT, callback);
+        this.removeListener(CHANGE_EVENT, callback)
     }
 
     isAuthenticated() {
@@ -50,21 +50,23 @@ const AuthStore = new AuthStoreClass();
 // Here we register a callback for the dispatcher
 // and look for our various action types so we can
 // respond appropriately
-
 AuthStore.dispatchToken = AppDispatcher.register(action => {
-   switch(action.actionType) {
-       case AuthConstants.LOGIN_USER:
-           setUser(action.profile, action.token);
-           AuthStore.emitChange();
-           break;
 
-       case AuthConstants.LOGOUT_USER:
-           removeUser();
-           AuthStore.emitChange();
-           break;
+    switch(action.actionType) {
 
-       default:
-   }
+        case AuthConstants.LOGIN_USER:
+            setUser(action.profile, action.token);
+            AuthStore.emitChange();
+            break
+
+        case AuthConstants.LOGOUT_USER:
+            removeUser();
+            AuthStore.emitChange();
+            break
+
+        default:
+    }
+
 });
 
 export default AuthStore;
